@@ -2,6 +2,8 @@
 
 This repository contains various experiments that explore deep reinforcement learning (DRL) for multi-restart strategies in the UES-CMA-ES metaheuristic hybrid. Each experiment folder includes code, scripts, and partial results or logs. Below is an overview of what each experiment investigates and the primary outcomes.
 
+For experiments that rely on trained reinforcement learning agents, the trained models are available in the `policy/` directory inside the corresponding experiment folder. These policies can be loaded directly for evaluation and reproducibility without retraining.
+
 ## Experiment 1
 
 **Goal:** Test the initial Fit100-Act100 approach on a small set of functions (e.g., F6, F9, F11, etc.) where the environment tries to restart from one of 100 recorded solutions during the run.
@@ -120,6 +122,36 @@ For brevity, the subsequent experiments explore different reward schemes (standa
 - **Experiment 12:** FinalCombo with a stagnation-aware penalty in the reward function.
 - **Experiment 13–15:** Evaluating trained models with different reward settings on the full benchmark.
 - **Experiment 16:** Scaling the DRL hybrid to larger function evaluation budgets (e.g., 900k FEs).
+
+## Experiment 17
+
+**Goal:** Evaluate the DRL-enhanced UES-CMA-ES hybrid on high-dimensional problems (100D).
+
+### Description
+- Experiments conducted on the CEC'13 benchmark in 100 dimensions.
+- Total budget of 1,000,000 function evaluations.
+- Compares the DRL-controlled UES-CMA-ES against UES-CMA-ES, UES, and CMA-ES.
+- Uses a trained agent from the FinalCombo environment.
+
+### Outcome
+- The DRL hybrid maintains competitive or superior performance in 100D.
+- Performance improvements become more pronounced with larger evaluation budgets.
+- Confirms scalability of learned restart strategies to higher-dimensional problems.
+
+## Experiment 18
+
+**Goal:** Perform a preliminary sensitivity analysis of the stagnation-aware reward parameters τ (tau) and γ (gamma).
+
+### Description
+- Experiments conducted in 30 dimensions with a reduced budget of 30,000 function evaluations.
+- Training performed on a small representative subset of CEC'13 functions.
+- Multiple values of τ and γ are evaluated to study their interaction with the stagnation-aware reward.
+- Trained agents are provided in the `policy/` directory.
+
+### Outcome
+- Results indicate that different τ–γ combinations lead to clearly different behaviors.
+- Confirms that stagnation sensitivity significantly affects restart decisions.
+- Intended as an exploratory analysis rather than a full hyperparameter tuning.
 
 ## References
 
