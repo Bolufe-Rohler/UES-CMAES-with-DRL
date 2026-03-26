@@ -1,0 +1,8 @@
+metric,value
+scipy_available,True
+n_pairs,28
+test_used,wilcoxon signed-rank
+alternative,two-sided
+statistic,122.0
+p_value,0.06623983383178711
+note,OK
